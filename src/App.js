@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import ListaDeAlbuns from "./components/ListaAlbuns";
+import FormularioCadastro from "./components/FormularioCadastro"
+import { Component } from "react";
+import "./assets/App.css";
+import './assets/index.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+
+  constructor(){
+    super();
+
+    this.state = {
+      albuns:[]
+    }
+  }
+
+  criarCard(titulo, texto){
+    const novoCard = {titulo, texto};
+    const novoArrayAlbuns = [...this.state.albuns,novoCard]
+    const novoEstado = {
+      albuns:novoArrayAlbuns
+    }
+    this.setState(novoEstado)
+  }
+
+  render() {
+    return (
+      <section className="conteudo">
+        <FormularioCadastro criarCard={this.criarCard.bind(this)}/>
+        <ListaDeAlbuns albuns={this.state.albuns}/>
+      </section>
+    );
+  }
 }
-
-export default App;
