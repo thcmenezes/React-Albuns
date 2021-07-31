@@ -10,7 +10,7 @@ class ListaDeAlbuns extends Component {
                 (album, indice) => {
                     return (
                         <li className="lista-albuns_item" key={indice}>
-                            <CardAlbum titulo={album.titulo} texto={album.texto}/>
+                            <CardAlbum titulo={album.titulo} texto={albums.texto}/>
                         </li>
                     );
                 }
